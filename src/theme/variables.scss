@@ -1,2 +1,32 @@
-// For information on how to create your own theme, please refer to:
-// https://ionicframework.com/docs/theming/
+@import url(https://fonts.bunny.net/css?family=manrope:200,300,400,500,600,700,800);
+
+:root {
+  /* Set the background of the entire app */
+    --app-background-color: #f7f5f0;
+    --app-surface-color: #fff;
+    --app-primary-text-color: #242321;
+    --app-secondary-text-color: #77736C;
+    --app-accent-color: #8B5E3C;
+    --app-accent-hover-color: #70472D;
+    --app-light-accent-color: #e8d8c8;
+    --app-success-color: #657a5b;
+    --app-error-color: #b85c50;
+    --app-border-color: #e3dfd8;
+    /* Set the font family of the entire app */
+    --app-font-family: 'Manrope', sans-serif;
+
+  /* Ionic */
+  --ion-font-family: var(--app-font-family);
+ --ion-background-color: transparent;
+  --ion-text-color: var(--app-text);
+}
+
+/* Set text color of the entire app for iOS only */
+:root.ios {
+  --ion-text-color: #000;
+}
+
+/* Set text color of the entire app for Material Design only */
+:root.md {
+  --ion-text-color: #222;
+}

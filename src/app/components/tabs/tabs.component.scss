@@ -1,0 +1,15 @@
+ion-tab-bar{
+  background-color: var(--app-surface-color);
+  border: 2px solid var(--app-border-color);
+  padding: 10px;
+  border-top-right-radius: 25px;
+  border-top-left-radius: 25px;
+  justify-content: space-between;
+}
+
+ion-tab-button {
+  background-color: var(--app-surface-color);
+  --color: var(--app-light-accent-color);
+  --color-selected: var(--app-accent-color);
+}
+
