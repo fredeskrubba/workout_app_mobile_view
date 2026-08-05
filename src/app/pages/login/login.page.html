@@ -1,0 +1,30 @@
+<ion-content fullscreen>
+  <ion-grid class="login-grid">
+    <ion-row class="login-row" justify-content-center align-items-center>
+      <ion-col size-xs="12" size-sm="10" size-md="6" size-lg="4">
+        <ion-card>
+          <ion-card-header>
+            <ion-card-title>Welcome Back</ion-card-title>
+            <ion-card-subtitle>Sign in to continue</ion-card-subtitle>
+          </ion-card-header>
+          <ion-card-content>
+            <form>
+              <ion-item>
+                <ion-label position="floating">Email</ion-label>
+                <ion-input type="email" autocomplete="email" [value]="email()" (ionInput)="email.set($event.detail.value ?? '')"></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-label position="floating">Password</ion-label>
+                <ion-input type="password" autocomplete="current-password" [value]="password()" (ionInput)="password.set($event.detail.value ?? '')"></ion-input>
+              </ion-item>
+              <ion-button expand="block" class="login-button" (click)="login()">Login</ion-button>
+            </form>
+            <div class="login-links">
+              <ion-button fill="clear" size="small">Forgot password?</ion-button>
+            </div>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
