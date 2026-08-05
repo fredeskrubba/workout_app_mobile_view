@@ -25,3 +25,55 @@
 #container a {
   text-decoration: none;
 }
+
+
+.weekly-session-overview {
+    display: grid;
+    grid-template-columns: repeat(7, minmax(0, 1fr));
+    gap: 10px;
+    margin: 0 20px
+}
+
+
+.weekly-session {
+  display: flex;
+  align-self: center;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.weekly-session h3,
+.weekly-session p {
+  margin: 0;
+  color: var(--app-accent-color);
+}
+
+.weekly-session h3 {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.weekly-session p {
+  width: 42px;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 3px solid var(--app-accent-color);
+  border-radius: 50%;
+  background-color: var(--app-surface-color);
+  font-weight: 600;
+}
+
+.weekly-session.has-session p, .weekly-session.has-session h3 {
+  border-color: var(--app-success-color);
+  color: var(--app-success-color);
+}
+
+.weekly-session.has-no-session p, .weekly-session.has-no-session h3 {
+  border-color: var(--app-error-color);
+  color: var(--app-error-color);
+}
+

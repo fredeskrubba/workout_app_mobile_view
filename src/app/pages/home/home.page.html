@@ -1,6 +1,11 @@
 <ion-content [fullscreen]="true">
   <app-top-menu/>
-  <div id="container">
-    <strong>Home</strong>
+  <div class="weekly-session-overview">
+    @for (day of this.weekdays; track day.id) {
+      <div class="weekly-session" [class.has-session]="day.sessionRegistered" [class.has-no-session]="!day.sessionRegistered">
+        <h3>{{ day.name.substring(0,3) }}</h3>
+        <p>{{+day.date.substring(8,10)}}</p>
+      </div>
+    }
   </div>
 </ion-content>
