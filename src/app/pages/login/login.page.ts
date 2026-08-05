@@ -22,6 +22,7 @@ export class LoginPage implements OnInit {
   login(){
     console.log(`Email entered: ${this.email()} Password entered: ${this.password()}`);
   }
+  
   ngOnInit() {
   }
 
