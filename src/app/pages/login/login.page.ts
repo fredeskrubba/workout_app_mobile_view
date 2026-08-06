@@ -24,7 +24,7 @@ export class LoginPage implements OnInit {
   login(){
     this.authService.login(this.email(), this.password());
 
-    console.log("This is the login page speaking: " + this.authService.accessToken());
+    console.log("This is the login page speaking: " + this.authService.getAccessToken());
   }
 
   ngOnInit() {

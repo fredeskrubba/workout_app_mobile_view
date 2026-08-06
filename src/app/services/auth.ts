@@ -10,8 +10,8 @@ import { Router } from '@angular/router';
 export class Auth {
   http = inject(HttpClient);
   router = inject(Router)
-  accessToken = signal("");
-  refreshToken = signal("");
+  private accessToken = signal("");
+  private refreshToken = signal("");
 
   async login(email:string, password:string) {
     const credentials = {
@@ -19,24 +19,60 @@ export class Auth {
       password: password
     };
 
-  this.http
-    .post<LoginResponse>(
-      'https://localhost:7293/api/login',
-      credentials
-    )
-    .subscribe({
-      next: (response) => {
-        console.log(response.accessToken);
-        console.log(response.refreshToken);
-        
-        this.accessToken.set(response.accessToken);
-        this.refreshToken.set(response.refreshToken);
-        this.router.navigate(['/home']);
-      },
-      error: (error) => {
-        console.error('Login failed:', error);
-      }
-    });
-}
+    this.http
+      .post<LoginResponse>(
+        'https://localhost:7293/api/login',
+        credentials
+      )
+      .subscribe({
+        next: (response) => {
+          console.log(response.accessToken);
+          console.log(response.refreshToken);
+          
+          this.accessToken.set(response.accessToken);
+          this.refreshToken.set(response.refreshToken);
 
+          this.router.navigate(['/home']);
+        },
+        error: (error) => {
+          console.error('Login failed:', error);
+        }
+      });
+  }
+
+
+  async refreshAccessToken(userId: number){
+    const credentials = {
+      userId: userId,
+      refreshToken: this.refreshToken
+    };
+
+
+    this.http
+      .post<LoginResponse>(
+        'https://localhost:7293/api/refresh-token',
+        credentials
+      )
+      .subscribe({
+        next: (response) => {
+          console.log(response.accessToken);
+          console.log(response.refreshToken);
+          
+          this.accessToken.set(response.accessToken);
+          this.refreshToken.set(response.refreshToken);
+
+        },
+        error: (error) => {
+          console.error('Refresh failed:', error);
+        }
+      });
+  }
+
+  getAccessToken(){
+    return this.accessToken();
+  } 
+
+  getRefreshToken(){
+    return this.refreshToken();
+  }
 }
