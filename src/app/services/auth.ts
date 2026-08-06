@@ -10,8 +10,8 @@ import { Router } from '@angular/router';
 export class Auth {
   http = inject(HttpClient);
   router = inject(Router)
-  private accessToken = signal("");
-  private refreshToken = signal("");
+  private accessToken = signal<string | null>(null);
+
 
   async login(email:string, password:string) {
     const credentials = {
@@ -27,11 +27,9 @@ export class Auth {
       .subscribe({
         next: (response) => {
           console.log(response.accessToken);
-          console.log(response.refreshToken);
           
           this.accessToken.set(response.accessToken);
-          this.refreshToken.set(response.refreshToken);
-
+       
           this.router.navigate(['/home']);
         },
         error: (error) => {
@@ -41,38 +39,25 @@ export class Auth {
   }
 
 
-  async refreshAccessToken(userId: number){
-    const credentials = {
-      userId: userId,
-      refreshToken: this.refreshToken
-    };
-
-
-    this.http
-      .post<LoginResponse>(
-        'https://localhost:7293/api/refresh-token',
-        credentials
-      )
-      .subscribe({
-        next: (response) => {
-          console.log(response.accessToken);
-          console.log(response.refreshToken);
-          
-          this.accessToken.set(response.accessToken);
-          this.refreshToken.set(response.refreshToken);
-
-        },
-        error: (error) => {
-          console.error('Refresh failed:', error);
-        }
-      });
-  }
+  refreshAccessToken() {
+    return this.http.post<LoginResponse>(
+      'https://localhost:7293/api/refresh-token',
+      {},
+      {
+        withCredentials: true
+      }
+    );
+}
 
   getAccessToken(){
     return this.accessToken();
   } 
 
-  getRefreshToken(){
-    return this.refreshToken();
+  logout(){
+    console.log("Logged out");
+  }
+
+  isAuthenticated(): boolean {
+    return this.accessToken() !== null;
   }
 }
