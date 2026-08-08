@@ -2,6 +2,8 @@ import { Injectable, inject, signal } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { LoginResponse } from '../models/DTOs/loginResponse';
 import { Router } from '@angular/router';
+import { RefreshTokenResponse } from '../models/DTOs/refreshTokenResponse';
+import { environment } from 'src/environments/environment.development';
 
 @Injectable({
   providedIn: 'root',
@@ -13,7 +15,7 @@ export class Auth {
   private accessToken = signal<string | null>(null);
 
 
-  async login(email:string, password:string) {
+  login(email:string, password:string) {
     const credentials = {
       email: email,
       password: password
@@ -21,7 +23,7 @@ export class Auth {
 
     this.http
       .post<LoginResponse>(
-        'https://localhost:7293/api/login',
+        environment.apiUrl + '/login',
         credentials
       )
       .subscribe({
@@ -40,8 +42,8 @@ export class Auth {
 
 
   refreshAccessToken() {
-    return this.http.post<LoginResponse>(
-      'https://localhost:7293/api/refresh-token',
+    return this.http.post<RefreshTokenResponse>(
+      environment.apiUrl + '/refresh-token',
       {},
       {
         withCredentials: true

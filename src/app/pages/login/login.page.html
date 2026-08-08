@@ -17,10 +17,10 @@
                 <ion-label position="floating">Password</ion-label>
                 <ion-input type="password" autocomplete="current-password" [value]="password()" (ionInput)="password.set($event.detail.value ?? '')"></ion-input>
               </ion-item>
-              <ion-button expand="block" class="login-button" (click)="login()">Login</ion-button>
+              <ion-button type="button" expand="block" class="login-button" (click)="login()">Login</ion-button>
             </form>
             <div class="login-links">
-              <ion-button fill="clear" size="small">Forgot password?</ion-button>
+              <ion-button type="button" fill="clear" size="small">Forgot password?</ion-button>
             </div>
           </ion-card-content>
         </ion-card>

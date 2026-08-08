@@ -1,5 +1,4 @@
 export type LoginResponse = {
-    accessToken:string,
-    refreshToken: string
+    accessToken:string
 
 }
