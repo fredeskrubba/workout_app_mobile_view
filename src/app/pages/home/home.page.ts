@@ -50,10 +50,6 @@ export class HomePage implements OnInit {
   getUserInfo(){
     return this.userService.getUserInfo();
   }
-
-  test(){
-    console.log(124);
-  }
   
   testApiCall(){
     console.log(123)
