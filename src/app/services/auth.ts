@@ -24,7 +24,10 @@ export class Auth {
     this.http
       .post<LoginResponse>(
         environment.apiUrl + '/login',
-        credentials
+        credentials,
+        {
+          withCredentials: true
+        }
       )
       .subscribe({
         next: (response) => {
@@ -42,18 +45,22 @@ export class Auth {
 
 
   refreshAccessToken() {
-    return this.http.post<RefreshTokenResponse>(
+    return this.http.put<RefreshTokenResponse>(
       environment.apiUrl + '/refresh-token',
       {},
       {
         withCredentials: true
       }
     );
-}
+  }
 
   getAccessToken(){
     return this.accessToken();
   } 
+
+  setAccessToken(newToken:string){
+    this.accessToken.set(newToken);
+  }
 
   logout(){
     console.log("Logged out");
