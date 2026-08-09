@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { RefreshTokenResponse } from '../models/DTOs/refreshTokenResponse';
 import { environment } from 'src/environments/environment.development';
 import { LogoutResponse } from '../models/DTOs/logoutResponse';
+import { tap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -52,7 +53,11 @@ export class Auth {
       {
         withCredentials: true
       }
-    );
+    ).pipe(
+    tap(response => {
+      this.accessToken.set(response.accessToken);
+    })
+  );
   }
 
   getAccessToken(){

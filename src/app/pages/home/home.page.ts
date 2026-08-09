@@ -9,7 +9,7 @@ import { GetUserResponse } from 'src/app/models/DTOs/getUserResponse';
   selector: 'app-home',
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
-  imports: [IonButton,  IonContent, TopMenuComponent],
+  imports: [ IonContent, TopMenuComponent],
 })
 export class HomePage implements OnInit {
 
@@ -21,14 +21,16 @@ export class HomePage implements OnInit {
   user = signal<GetUserResponse | null>(null);
 
   ngOnInit(): void {
-    // this.getUserInfo().subscribe((res) => {
-    //   this.user.set({
-    //     id: res.id,
-    //     firstName: res.firstName,
-    //     lastName: res.lastName,
-    //     email: res.email
-    //   });
-    // });
+    this.getUserInfo().subscribe((res) => {
+      this.user.set({
+        id: res.id,
+        firstName: res.firstName,
+        lastName: res.lastName,
+        email: res.email
+      });
+
+    });
+
   }
   
 
@@ -51,15 +53,4 @@ export class HomePage implements OnInit {
     return this.userService.getUserInfo();
   }
   
-  testApiCall(){
-    console.log(123)
-    this.getUserInfo().subscribe((res) => {
-      this.user.set({
-        id: res.id,
-        firstName: res.firstName,
-        lastName: res.lastName,
-        email: res.email
-      });
-    });
-  }
 }

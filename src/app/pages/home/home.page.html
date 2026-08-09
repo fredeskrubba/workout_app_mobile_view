@@ -1,5 +1,5 @@
 <ion-content [fullscreen]="true">
-  <app-top-menu/>
+  <app-top-menu [user]="user()"/>
   <div class="weekly-session-overview">
     @for (day of this.weekdays; track day.id) {
       <div class="weekly-session" [class.has-session]="day.sessionRegistered" [class.has-no-session]="!day.sessionRegistered">
@@ -7,7 +7,6 @@
         <p>{{+day.date.substring(8,10)}}</p>
       </div>
     }
-    <ion-button (click)="testApiCall()">Click me</ion-button>
   </div>
 
 </ion-content>

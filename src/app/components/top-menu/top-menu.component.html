@@ -6,7 +6,7 @@
           <div class="profile-picture">
       
           </div>
-          <p>Unknown user</p>
+          <p>{{user() ? user()?.firstName + " " + user()?.lastName : "Unknown user"}}</p>
         </div>
       </ion-button>
     </ion-buttons>
