@@ -14,4 +14,8 @@ describe('LoginPage', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should be invalid when required fields are empty', () => {
+    expect(component.form.valid).toBeFalse();
+  });
 });

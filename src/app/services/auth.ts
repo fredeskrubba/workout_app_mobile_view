@@ -4,6 +4,7 @@ import { LoginResponse } from '../models/DTOs/loginResponse';
 import { Router } from '@angular/router';
 import { RefreshTokenResponse } from '../models/DTOs/refreshTokenResponse';
 import { environment } from 'src/environments/environment.development';
+import { LogoutResponse } from '../models/DTOs/logoutResponse';
 
 @Injectable({
   providedIn: 'root',
@@ -63,7 +64,27 @@ export class Auth {
   }
 
   logout(){
-    console.log("Logged out");
+    const credentials = {
+     
+    };
+
+    this.http
+      .post<LogoutResponse>(
+        environment.apiUrl + '/logout',
+        credentials,
+        {
+          withCredentials: true
+        }
+      )
+      .subscribe({
+        next: (response) => {
+          
+          this.router.navigate(['/login']);
+        },
+        error: (error) => {
+          console.error('Logout failed:', error);
+        }
+      });
   }
 
   isAuthenticated(): boolean {

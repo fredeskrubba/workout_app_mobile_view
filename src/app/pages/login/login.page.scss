@@ -41,6 +41,12 @@ ion-item {
   --border-color: var(--app-border-color);
 }
 
+.error-message {
+  color: var(--ion-color-danger);
+  font-size: 0.85rem;
+  margin: 0.25rem 0 0 0.75rem;
+}
+
 ion-label,
 ion-card-title,
 ion-card-subtitle {
