@@ -8,12 +8,21 @@ import { GetUserResponse } from 'src/app/models/DTOs/getUserResponse';
   styleUrls: ['./top-menu.component.scss'],
   imports: [IonIcon, IonButton, IonButtons, IonHeader, IonToolbar],
 })
-export class TopMenuComponent  implements OnInit {
+export class TopMenuComponent implements OnInit {
 
   constructor() { }
 
   ngOnInit() {}
 
   user = input<GetUserResponse | null>(null);
+
+  get initials(): string {
+    const firstName = this.user()?.firstName?.trim() ?? '';
+    const lastName = this.user()?.lastName?.trim() ?? '';
+    const firstInitial = firstName ? firstName.charAt(0) : '';
+    const lastInitial = lastName ? lastName.charAt(0) : '';
+
+    return `${firstInitial}${lastInitial}`.toUpperCase() || '?';
+  }
 
 }

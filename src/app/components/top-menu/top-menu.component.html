@@ -3,8 +3,8 @@
     <ion-buttons slot="start">
       <ion-button>
         <div class="user-section">
-          <div class="profile-picture">
-      
+          <div class="profile-picture" aria-label="User profile initials">
+            <span>{{ initials }}</span>
           </div>
           <p>{{user() ? user()?.firstName + " " + user()?.lastName : "Unknown user"}}</p>
         </div>

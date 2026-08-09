@@ -28,7 +28,6 @@ export class HomePage implements OnInit {
         lastName: res.lastName,
         email: res.email
       });
-
     });
 
   }
