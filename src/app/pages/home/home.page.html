@@ -2,11 +2,27 @@
   <app-top-menu [user]="user()"/>
   <div class="weekly-session-overview">
     @for (day of this.weekdays; track day.id) {
-      <div class="weekly-session" [class.has-session]="day.sessionRegistered" [class.has-no-session]="!day.sessionRegistered">
+      <div class="weekly-session" [class.has-session]="dayHasWorkoutSession(day)" [class.has-no-session]="!dayHasWorkoutSession(day)" [class.active]="isSelectedDay(day)" (click)="setSelectedDate(day.date)">
         <h3>{{ day.name.substring(0,3) }}</h3>
         <p>{{+day.date.substring(8,10)}}</p>
       </div>
     }
   </div>
-  <app-today-session-card />
+  <app-today-session-card [selectedDay]="this.selectedDate()"/>
+  <ion-card class="recent-list">
+    <h4>Recent Sessions</h4>
+    @for (session of this.workoutSessions(); track session.sessionId){
+      <p class="session-date">{{ session.date | date:'dd-MM-yyyy' }}</p>
+      <div class="session-bar">
+        <div class="bar-header">
+          <h3>Routine name here</h3>
+          <span class="rating">
+            <p class="rating-number">{{session.rating}}</p>
+            <ion-icon name="star"></ion-icon>
+          </span>
+        </div>
+        <p class="duration">{{session.durationSeconds | duration}} minutes duration</p>
+      </div>
+    }
+  </ion-card>
 </ion-content>
