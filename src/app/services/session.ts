@@ -1,25 +1,23 @@
 import { Injectable, inject, signal } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment.development';
-import { GetUserResponse } from '../models/DTOs/getUserResponse';
 import { Auth } from './auth';
+import { GetUserSessionsResponse } from '../models/DTOs/getUserSessionsResponse';
+
 
 @Injectable({
   providedIn: 'root',
 })
-
-export class User {
+export class Session {
 
   http = inject(HttpClient);
   authService = inject(Auth);
-  
-  getUserInfo(){
+
+  getAllUserSessions(){
     let accessToken = this.authService.getAccessToken();
     const payload = accessToken ? JSON.parse(atob(accessToken.split('.')[1])) : "";
-    
 
-    return this.http.get<GetUserResponse>(`${environment.apiUrl}/users/${Number(payload.sub)}`);
+     return this.http.get<GetUserSessionsResponse>(`${environment.apiUrl}/session`);
   }
-
 
 }

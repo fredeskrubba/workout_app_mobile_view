@@ -5,6 +5,7 @@ import { TopMenuComponent } from 'src/app/components/top-menu/top-menu.component
 import { User } from 'src/app/services/user';
 import { GetUserResponse } from 'src/app/models/DTOs/getUserResponse';
 import { TodaySessionCard } from 'src/app/components/homepage/today-session-card/today-session-card';
+import { Session } from 'src/app/services/session';
 
 @Component({
   selector: 'app-home',
@@ -19,6 +20,7 @@ export class HomePage implements OnInit {
   }
   
   userService = inject(User);
+  sessionService = inject(Session);
   user = signal<GetUserResponse | null>(null);
 
   ngOnInit(): void {
@@ -31,6 +33,9 @@ export class HomePage implements OnInit {
       });
     });
 
+    this.getUserSessions().subscribe((res)=> {
+      console.log(res);
+    })
   }
   
 
@@ -51,6 +56,10 @@ export class HomePage implements OnInit {
 
   getUserInfo(){
     return this.userService.getUserInfo();
+  }
+
+  getUserSessions(){
+    return this.sessionService.getAllUserSessions();
   }
   
 }
