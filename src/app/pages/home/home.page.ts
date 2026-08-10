@@ -4,12 +4,13 @@ import { TabsComponent } from '../../components/tabs/tabs.component';
 import { TopMenuComponent } from 'src/app/components/top-menu/top-menu.component';
 import { User } from 'src/app/services/user';
 import { GetUserResponse } from 'src/app/models/DTOs/getUserResponse';
+import { TodaySessionCard } from 'src/app/components/homepage/today-session-card/today-session-card';
 
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
-  imports: [ IonContent, TopMenuComponent],
+  imports: [ IonContent, TopMenuComponent, TodaySessionCard],
 })
 export class HomePage implements OnInit {
 

@@ -1,0 +1,61 @@
+.today-session-card {
+    background-color: var(--app-surface-color);
+    color: var(--app-primary-text-color);
+    border: 1px solid var(--app-border-color);
+    padding: 16px;
+}
+
+.card-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 16px;
+    align-items: start;
+}
+
+.card-text ion-card-header,
+.card-text ion-card-content {
+    margin: 0;
+}
+
+ion-card-title {
+    color: var(--app-primary-text-color);
+    font-size: 26px;
+    font-weight: 700;
+}
+
+.card-media {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 12px;
+}
+
+.card-media img {
+    width: 100%;
+    height: auto;
+    max-height: 170px;
+    object-fit: contain;
+    border-radius: 16px;
+}
+
+ion-button.session-button {
+    --background: var(--app-light-accent-color);
+    --background-hover: var(--app-accent-hover-color, var(--app-light-accent-color));
+    --color: var(--app-surface-color);
+    --border-radius: 999px;
+    width: 80%;
+    height: 50px;
+    text-transform: none;
+    font-weight: 400;
+    font-size: 18px;
+}
+
+.session-button .button-label {
+    margin-right: 6px;
+}
+
+.session-button ion-icon {
+    font-size: 2rem;
+}
+
