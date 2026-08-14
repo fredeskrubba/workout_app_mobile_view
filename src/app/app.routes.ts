@@ -34,6 +34,11 @@ export const routes: Routes = [
           import('./pages/routines/routines.page').then((m) => m.RoutinesPage),
       },
       {
+        path: 'user-info',
+        loadComponent: () =>
+          import('./pages/user-info/user-info.page').then((m) => m.UserinfoPage),
+      },
+      {
         path: '',
         redirectTo: 'home',
         pathMatch: 'full',

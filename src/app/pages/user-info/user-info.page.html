@@ -1,0 +1,19 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="goBack()">Back</ion-button>
+    </ion-buttons>
+    <ion-buttons slot="end"></ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <div class="user-info-container">
+    <div class="avatar-circle" aria-label="User initials">
+      <span class="initials">{{ user() ? (user()?.firstName?.charAt(0) + (user()?.lastName?.charAt(0) ?? '') )?.toUpperCase() : '?' }}</span>
+    </div>
+
+    <h2 class="name">{{ user() ? user()?.firstName : '' }} {{ user() ? user()?.lastName : '' }}</h2>
+    <p class="email">{{ user() ? user()?.email : '' }}</p>
+  </div>
+</ion-content>

@@ -1,4 +1,5 @@
 import { Component, OnInit, input } from '@angular/core';
+import { Router } from '@angular/router';
 import { IonHeader, IonToolbar, IonButtons, IonButton, IonIcon } from '@ionic/angular/standalone';
 import { GetUserResponse } from 'src/app/models/DTOs/getUserResponse';
 
@@ -10,11 +11,15 @@ import { GetUserResponse } from 'src/app/models/DTOs/getUserResponse';
 })
 export class TopMenuComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() {}
 
   user = input<GetUserResponse | null>(null);
+
+  goToUserInfo() {
+    this.router.navigate(['/user-info']);
+  }
 
   get initials(): string {
     const firstName = this.user()?.firstName?.trim() ?? '';
