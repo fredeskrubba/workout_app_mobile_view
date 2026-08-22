@@ -19,6 +19,11 @@
     <h2 class="name">{{ user() ? user()?.firstName : '' }} {{ user() ? user()?.lastName : '' }}</h2>
     <p class="email">{{ user() ? user()?.email : '' }}</p>
   </div>
+  <div class="stats">
+    <p>{{this.getTotalSessionsNumber()}} Total sessions</p>
+    <p>{{this.getTotalExerciseHours()}} Hours exercised</p>
+    <p>{{this.getWeeklyStreak()}} Weekly streak</p>
+  </div>
 </ion-content>
 <ion-footer>
   <ion-button class="logout-button" expand="block" (click)="logout()">

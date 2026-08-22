@@ -25,18 +25,14 @@ export const authInterceptor: HttpInterceptorFn = (req, next) => {
   return next(authReq).pipe(
     catchError(error => {
 
-      console.log('INTERCEPTOR ERROR:', error.status, req.url);
 
       if (error.status !== 401) {
         return throwError(() => error);
       }
 
-      console.log('401 -> REFRESHING');
 
       return authService.refreshAccessToken().pipe(
         switchMap(response => {
-
-          console.log('REFRESH SUCCESS:', response);
           
           authService.setAccessToken(response.accessToken);
 
@@ -46,14 +42,10 @@ export const authInterceptor: HttpInterceptorFn = (req, next) => {
             }
           });
 
-          console.log('RETRYING:', retryRequest.url);
-
           return next(retryRequest);
         }),
 
         catchError(refreshError => {
-
-          console.log('REFRESH FAILED:', refreshError);
 
           authService.logout();
 
