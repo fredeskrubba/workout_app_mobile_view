@@ -1,17 +1,20 @@
+
 ion-header {
-  --background: transparent;
-  --ion-background-color: transparent;
+  --background: transparent !important;
+  background: transparent !important;
+  box-shadow: none;
 }
 
 ion-toolbar {
-  --background: transparent;
-  --ion-toolbar-background: transparent;
+  --background: transparent !important;
+    background: transparent !important;
+  --border-width: 0;
 }
 
-.toolbar-background {
-  --background: transparent;
+ion-buttons ion-button {
+  font-weight: 900;
+  font-size: 18px;
 }
-
 
 .user-info-container {
   display: flex;
