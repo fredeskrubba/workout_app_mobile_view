@@ -14,6 +14,20 @@ ion-buttons ion-button {
   font-size: 18px;
 }
 
+ion-footer ion-buttons {
+  justify-content: center;
+}
+
+.logout-button {
+  --background: var(--app-surface-color);
+  border: 2px solid var(--app-error-color);
+  border-radius: 5px;
+  --color: var(--app-error-color);
+  margin: 10px;
+  font-weight: 900;
+  font-size: 20px;
+}
+
 .user-info-container {
   display: flex;
   flex-direction: column;

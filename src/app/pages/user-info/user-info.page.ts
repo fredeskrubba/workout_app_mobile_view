@@ -1,6 +1,7 @@
 import { Component, OnInit, inject, signal } from '@angular/core';
 import { IonHeader, IonToolbar, IonButtons, IonButton, IonContent, IonIcon, IonFooter } from '@ionic/angular/standalone';
 import { User } from 'src/app/services/user';
+import { Auth } from 'src/app/services/auth';
 import { GetUserResponse } from 'src/app/models/DTOs/getUserResponse';
 import { Router } from '@angular/router';
 import { arrowBackOutline, logOutOutline } from 'ionicons/icons';
@@ -15,6 +16,7 @@ import { addIcons } from 'ionicons';
 export class UserinfoPage implements OnInit {
 
   userService = inject(User);
+  authService = inject(Auth);
   router = inject(Router);
   user = signal<GetUserResponse | null>(null);
 
@@ -30,6 +32,10 @@ export class UserinfoPage implements OnInit {
 
   goBack() {
     this.router.navigate(['/home']);
+  }
+
+  logout() {
+    this.authService.logout();
   }
 
 }

@@ -21,11 +21,8 @@
   </div>
 </ion-content>
 <ion-footer>
-  <ion-buttons>
-      <ion-button expand="full">
-        Logout
-        <ion-icon slot="end" name="logout"></ion-icon>
-        
-      </ion-button>
-    </ion-buttons>
+  <ion-button class="logout-button" expand="block" (click)="logout()">
+    Logout
+    <ion-icon slot="end" name="logout"></ion-icon>
+  </ion-button>
 </ion-footer>
