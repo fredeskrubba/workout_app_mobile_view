@@ -36,10 +36,23 @@
 /* @import "@ionic/angular/css/palettes/dark.class.css"; */
 @import '@ionic/angular/css/palettes/dark.system.css';
 
-ion-content {
-  --background: linear-gradient(
+ion-header,
+ion-footer{
+  background: transparent !important;
+  --background: transparent !important;
+  --ion-toolbar-background: transparent !important;
+  border: none;
+  box-shadow: none;
+}
+
+ion-app {
+  background: linear-gradient(
     to bottom left,
     var(--app-background-color), 
     var(--app-accent-color) 97%
   );
+}
+
+ion-content {
+  --background: transparent;
 }

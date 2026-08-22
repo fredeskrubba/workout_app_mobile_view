@@ -1,7 +1,5 @@
 
-ion-header {
-  --background: transparent !important;
-  background: transparent !important;
+ion-header, ion-footer {
   box-shadow: none;
 }
 
@@ -25,8 +23,8 @@ ion-buttons ion-button {
 }
 
 .avatar-circle {
-  width: 120px;
-  height: 120px;
+  width: 200px;
+  height: 200px;
   border-radius: 50%;
   background: #ddd;
   display: flex;
@@ -36,7 +34,7 @@ ion-buttons ion-button {
 }
 
 .initials {
-  font-size: 40px;
+  font-size: 60px;
   font-weight: 600;
   color: #333;
 }

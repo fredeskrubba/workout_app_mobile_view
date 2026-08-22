@@ -1,16 +1,16 @@
 
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="goBack()">
+        <ion-icon slot="start" name="back"></ion-icon>
+        Back
+      </ion-button>
+    </ion-buttons>
+    <ion-buttons slot="end"></ion-buttons>
+  </ion-toolbar>
+</ion-header>
 <ion-content class="ion-padding">
-  <ion-header>
-    <ion-toolbar>
-      <ion-buttons slot="start">
-        <ion-button (click)="goBack()">
-          <ion-icon slot="start" name="back"></ion-icon>
-          Back
-        </ion-button>
-      </ion-buttons>
-      <ion-buttons slot="end"></ion-buttons>
-    </ion-toolbar>
-  </ion-header>
   <div class="user-info-container">
     <div class="avatar-circle" aria-label="User initials">
       <span class="initials">{{ user() ? (user()?.firstName?.charAt(0) + (user()?.lastName?.charAt(0) ?? '') )?.toUpperCase() : '?' }}</span>
@@ -20,3 +20,12 @@
     <p class="email">{{ user() ? user()?.email : '' }}</p>
   </div>
 </ion-content>
+<ion-footer>
+  <ion-buttons>
+      <ion-button expand="full">
+        Logout
+        <ion-icon slot="end" name="logout"></ion-icon>
+        
+      </ion-button>
+    </ion-buttons>
+</ion-footer>

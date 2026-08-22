@@ -1,11 +1,11 @@
 ion-header {
-    --background: transparent;
     display: flex;
     justify-content: center;
     align-items: center;
     border: none;
     --border-color: transparent;
     box-shadow: none;
+    --background: var(--app-surface-color);
 }
 
 ion-toolbar {
