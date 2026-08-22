@@ -20,9 +20,18 @@
     <p class="email">{{ user() ? user()?.email : '' }}</p>
   </div>
   <div class="stats">
-    <p>{{this.getTotalSessionsNumber()}} Total sessions</p>
-    <p>{{this.getTotalExerciseHours()}} Hours exercised</p>
-    <p>{{this.getWeeklyStreak()}} Weekly streak</p>
+    <div class="stat-box">
+      <span class="stat-value">{{ getTotalSessionsNumber() }}</span>
+      <span class="stat-label">Total sessions</span>
+    </div>
+    <div class="stat-box">
+      <span class="stat-value">{{ getTotalExerciseHours() }}</span>
+      <span class="stat-label">Hours exercised</span>
+    </div>
+    <div class="stat-box">
+      <span class="stat-value">{{ getWeeklyStreak() }}</span>
+      <span class="stat-label">Weekly streak</span>
+    </div>
   </div>
 </ion-content>
 <ion-footer>
