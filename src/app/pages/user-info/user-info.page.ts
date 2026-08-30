@@ -45,6 +45,11 @@ export class UserinfoPage implements OnInit {
   }
 
   goBack() {
+    if (window.history.length > 1) {
+      window.history.back();
+      return;
+    }
+
     this.router.navigate(['/home']);
   }
 
