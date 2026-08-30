@@ -9,9 +9,6 @@ export const authInterceptor: HttpInterceptorFn = (req, next) => {
 
   const token = authService.getAccessToken();
 
-  console.log('INTERCEPTOR:', req.url);
-  console.log('TOKEN:', token);
-
   if (!token) {
     return next(req);
   }
